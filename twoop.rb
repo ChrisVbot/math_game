@@ -1,36 +1,27 @@
 class Player
   
-  attr_accessor :points :lives
+  attr_accessor :name
+  attr_accessor :lives 
+  attr_accessor :gain
+  attr_accessor :lose
+  attr_accessor :total_losses
 
+#Initializes game and requires a name. Also sets #of lives, and keeps track of number of total losses. 
   def initialize(name)
     @name = name
+    @lives = 3
+    @total_losses = 0
   end
-
-  def points(points)
-    @points = points
-    #code to fight
+#Adds a point when user is correct
+  def gain
+    @lives += 1
   end
-
-  def lives
-    @lives = lives 
-
-
-    #<not sure if necessary> ... could so something like if incorrect, run lose_points method for that specific player, and then end the loop when that player's points == 0 
-    self.points -= 1
+#Deducts a point when user is incorrect
+  def lose
+    @lives -= 1
   end
-
-#below two methods are not necessary because attr_accessor can set the getters and setters
-  # this is a getter method:
-  # def points
-    # @points 
-
-#if decide want to set the above variable myself, need to create a setter method, e.g.
-  # def points =(new_points)
-  #   @points = new_points
+#Adds 1 to total losses any time a user loses
+  def total_losses
+    @total_losses += 1
+  end
 end
-
-bob = Player.new("Bob", 3)
-joe = Player.new("Joe", 3)
-
-bob.attack(joe) #would run the second method in the Player class 
-#in other file, put this in method: player1 logic logic player 2 and instantiate each player, e.g. player1 = Player.new(name,)
